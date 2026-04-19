@@ -21,6 +21,11 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 
+// Root route to prevent "Cannot GET /"
+app.get('/', (req, res) => {
+  res.send('ShopSphere API is running...');
+});
+
 // Database Connection & Server Start
 mongoose.connect(process.env.MONGODB_URI)
   .then(async () => {
